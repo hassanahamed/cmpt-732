@@ -35,5 +35,5 @@ jobs:
         ECR_REPOSITORY: docker_nodejs_demo
         IMAGE_TAG: nodejs_demo_image
       run: |
-        docker build --file ./src/Dockerfile --tag cmpt-732-question-similarity:latest
+        docker build --file ./src/Dockerfile -t cmpt-732-question-similarity:latest
         docker push public.ecr.aws/s8f1m0f4/cmpt-732-question-similarity:latest
