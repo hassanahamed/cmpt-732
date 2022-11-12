@@ -36,5 +36,6 @@ jobs:
         IMAGE_TAG: 1.0
       run: |
         docker build --file ./src/DockerFile -t cmpt-732-question-similarity .
+        docker tag cmpt-732-question-similarity:latest public.ecr.aws/s8f1m0f4/cmpt-732-question-similarity:latest
         docker push public.ecr.aws/s8f1m0f4/cmpt-732-question-similarity:latest
         echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
