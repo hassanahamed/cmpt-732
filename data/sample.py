@@ -17,6 +17,6 @@ schema = StructType([
 ])
 
 df = spark.read.format("xml") \
-    .option("rowTag","tags").load("Tags.xml", schema = schema)
+    .option("rowTag","row").load("Tags.xml")
 
 df.show()
