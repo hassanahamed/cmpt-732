@@ -1,6 +1,8 @@
 import streamlit as st 
 from wordcloud import WordCloud
 import plotly.graph_objects as go
+import pandas as pd
+
 import matplotlib.pyplot as plt
 
 def main():
@@ -19,7 +21,7 @@ def main():
 	if choices == 'Dashboard':
 
 
-
+								#------------------------------- chart 1 start----------------------------------------------
 		left_column, right_column = st.columns([1, 1])
 
 		# Widgets: selectbox
@@ -52,13 +54,60 @@ def main():
 
 		fig4.update_layout(barmode="stack")
 		fig4.update_layout(
+			autosize=False,
 			paper_bgcolor="#1f1d1d",
 			plot_bgcolor="#1f1d1d",
-			width=800,
-			height=600,
+			width=1800,
+			height=1600,
 			title="Questions to duplicate question ratio per tag",
 		)
 		st.plotly_chart(fig4)
+
+
+		st.markdown('##')
+		st.markdown('##')
+
+		#------------------------------- chart 1 ends----------------------------------------------
+
+
+		#------------------------------- chart 2 sratrs----------------------------------------------
+
+		df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/finance-charts-apple.csv')
+
+		fig = go.Figure(go.Scatter(
+			
+			x = df['Date'],
+			y = df['mavg']
+		))
+
+		fig.update_xaxes(
+			rangeslider_visible=True,
+			tickformatstops = [
+				dict(dtickrange=[None, 1000], value="%H:%M:%S.%L ms"),
+				dict(dtickrange=[1000, 60000], value="%H:%M:%S s"),
+				dict(dtickrange=[60000, 3600000], value="%H:%M m"),
+				dict(dtickrange=[3600000, 86400000], value="%H:%M h"),
+				dict(dtickrange=[86400000, 604800000], value="%e. %b d"),
+				dict(dtickrange=[604800000, "M1"], value="%e. %b w"),
+				dict(dtickrange=["M1", "M12"], value="%b '%y M"),
+				dict(dtickrange=["M12", None], value="%Y Y")
+			]
+		)
+
+		fig.update_layout(
+			autosize=False,
+			paper_bgcolor="#1f1d1d",
+			# plot_bgcolor="#1f1d1d",
+			width=1500,
+			height=900,
+			title="Rate of marking question duplicate",
+		)
+		st.plotly_chart(fig)
+
+		st.markdown('##')
+		st.markdown('##')
+
+		#------------------------------- chart 2 ends----------------------------------------------
 
 
 
