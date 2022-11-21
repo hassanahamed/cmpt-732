@@ -18,7 +18,7 @@ def main():
 	## -------------------------------------------------------Dash board page start-------------------------------------------------------
 	if choices == 'Dashboard':
 
-		
+
 
 		left_column, right_column = st.columns([1, 1])
 
@@ -52,8 +52,8 @@ def main():
 
 		fig4.update_layout(barmode="stack")
 		fig4.update_layout(
-			paper_bgcolor="#bcbcbc",
-			plot_bgcolor="#f9e5e5",
+			paper_bgcolor="#1f1d1d",
+			plot_bgcolor="#1f1d1d",
 			width=800,
 			height=600,
 			title="Questions to duplicate question ratio per tag",
