@@ -18,6 +18,41 @@ def main():
 
     ## -------------------------------------------------------Dash board page start-------------------------------------------------------
     if choices == "Dashboard":
+		
+        indicators = go.Figure()
+
+        indicators.add_trace(go.Indicator(
+			value = 1200,
+			title= {'text': "Total questions"},
+			domain = {'row': 0, 'column': 0}))
+
+        indicators.add_trace(go.Indicator(
+			value = 300,
+			title= {'text': "Duplicate Questions"},
+			domain = {'row': 0, 'column': 1}))
+
+        indicators.add_trace(go.Indicator(
+			value = 400,
+			title= {'text': "Total tags"},
+			domain = {'row': 1, 'column': 0}))
+
+        indicators.add_trace(go.Indicator(
+			value = 500,
+			title= {'text': "Total Users"},
+			domain = {'row': 1, 'column': 1}))
+
+        indicators.update_layout(
+			grid = {'rows': 2, 'columns': 2, 'pattern': "independent"},
+			template = {'data' : {'indicator': [{
+				'mode' : "number+gauge"}]
+								}},
+			grid_xgap=0.4,
+    		grid_ygap=0.5)
+        
+        st.plotly_chart(indicators)
+
+        st.markdown("##")
+        st.markdown("##")
 
         # ------------------------------- chart 1 start----------------------------------------------
         left_column, right_column = st.columns([1, 1])
