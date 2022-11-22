@@ -2,6 +2,7 @@ import streamlit as st
 from wordcloud import WordCloud
 import plotly.graph_objects as go
 import pandas as pd
+import dashboard_graph_helper as dh
 
 import matplotlib.pyplot as plt
 
@@ -60,33 +61,32 @@ def main():
         left_column, right_column = st.columns([1, 1])
 
         # Widgets: selectbox
-        sources = ["All", "2018", "2019", "2020"]
-        energy = left_column.selectbox("Year for graph1", sources)
+        sources = ["All", 2018, 2019, 2020]
+        year = left_column.selectbox("Year for graph1", sources)
+
+        tag_pd = dh.get_question_tag_count_data(year)
+
 
         fig4 = go.Figure()
         ## for duplicate questions per tag
         fig4.add_trace(
             go.Bar(
-                y=["one", "two", "three"],
-                x=[
-                    1,
-                    2,
-                    3,
-                ],
+                y=tag_pd['tag'],
+                x=tag_pd["count"],
                 hovertemplate="%{x:.2f}",
                 # showlegend=False,
-                name="duplicate",
+                name="questions",
                 orientation="h",
             ),
         )
         ## for total questions per tag
         fig4.add_trace(
             go.Bar(
-                y=["one", "two", "three"],
-                x=[3, 4, 1],
+                y=tag_pd["tag"],
+                x=tag_pd["duplicate_count"],
                 hovertemplate="%{x:.2f}",
                 # showlegend=False,
-                name="original",
+                name="duplicate questions",
                 orientation="h",
             ),
         )
