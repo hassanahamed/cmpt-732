@@ -30,10 +30,6 @@ def main():
 
 
 
-
-
-
-
     writing_df = spark.createDataFrame(data=data, schema = dict_schema)
     writing_df.write.json("dashboard_stats", mode='overwrite')
 
