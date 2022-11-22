@@ -25,36 +25,6 @@ def main():
     join2.write.csv("processed_data/is-duplicate-true", mode='overwrite')
 
 
-    
-    # left_anti = posts.alias('posts').join(postlinks.alias('postlinks1'), functions.col("postlinks1._PostId")== functions.col("posts._Id"), "leftanti")
-
-    
-
-    # left_anti = left_anti.sample(False, 0.38, seed=0)
-
-    # left_anti_join =  left_anti.alias('left_anti1').join(left_anti.alias('left_anti2'),None , "outer")
-
-    
-
-    # print("hello hassan 2", join2.count())
-
-
-    
-
-   
-
-
-    # join2_value = join1_value.join(postlinks, functions.col("join1_value._PostId")== functions.col("posts._Id"), "inner")
-
-    
-
-    # for x in post_links_group_by.count().collect():
-    #     if x.count>3:
-    #         print(x)
-
-
-
-
 if __name__ == '__main__':
     spark = SparkSession.builder.appName('reddit averages df').getOrCreate()
     assert spark.version >= '3.0' # make sure we have Spark 3.0+
