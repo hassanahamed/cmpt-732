@@ -7,34 +7,7 @@ from pyspark.sql import SparkSession, functions, types
 # add more functions as necessary
 
 def main():
-    # main logic starts here
-    comments_schema = types.StructType([
-    types.StructField('archived', types.BooleanType()),
-    types.StructField('author', types.StringType()),
-    types.StructField('author_flair_css_class', types.StringType()),
-    types.StructField('author_flair_text', types.StringType()),
-    types.StructField('body', types.StringType()),
-    types.StructField('controversiality', types.LongType()),
-    types.StructField('created_utc', types.StringType()),
-    types.StructField('distinguished', types.StringType()),
-    types.StructField('downs', types.LongType()),
-    types.StructField('edited', types.StringType()),
-    types.StructField('gilded', types.LongType()),
-    types.StructField('id', types.StringType()),
-    types.StructField('link_id', types.StringType()),
-    types.StructField('name', types.StringType()),
-    types.StructField('parent_id', types.StringType()),
-    types.StructField('retrieved_on', types.LongType()),
-    types.StructField('score', types.LongType()),
-    types.StructField('score_hidden', types.BooleanType()),
-    types.StructField('subreddit', types.StringType()),
-    types.StructField('subreddit_id', types.StringType()),
-    types.StructField('ups', types.LongType()),
-    #types.StructField('year', types.IntegerType()),
-    #types.StructField('month', types.IntegerType()),
-])
-
-
+   
     posts = spark.read.orc("post")
     postlinks = spark.read.orc("postlink")
 
@@ -51,7 +24,6 @@ def main():
     join2 = join2.sample(False, 0.72, seed=0)
     join2.write.csv("processed_data/is-duplicate-true", mode='overwrite')
 
-    print(join2.count())
 
     
     # left_anti = posts.alias('posts').join(postlinks.alias('postlinks1'), functions.col("postlinks1._PostId")== functions.col("posts._Id"), "leftanti")
