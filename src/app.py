@@ -19,6 +19,8 @@ def main():
     ## -------------------------------------------------------Dash board page start-------------------------------------------------------
     if choices == "Dashboard":
 		
+
+		# ------------------------------- Stats widget start----------------------------------------------
         indicators = go.Figure()
 
         indicators.add_trace(go.Indicator(
@@ -51,8 +53,8 @@ def main():
         
         st.plotly_chart(indicators)
 
-        st.markdown("##")
-        st.markdown("##")
+		# ------------------------------- Stats widget end----------------------------------------------
+
 
         # ------------------------------- chart 1 start----------------------------------------------
         left_column, right_column = st.columns([1, 1])

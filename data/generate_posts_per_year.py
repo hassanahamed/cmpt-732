@@ -34,14 +34,20 @@ def main():
     #types.StructField('month', types.IntegerType()),
 ])
 
-
-    posts = spark.read.json("processed_data/is-duplicate-true")
-    postlinks = spark.read.json("processed_data/is-duplicate-false")
+    # todo write later
 
 
-    result = posts.select("question1","question2","is_duplicate").union(postlinks.select("question1","question2","is_duplicate"))
 
-    result.write.csv("processed_data/combined_data", mode='overwrite')
+    posts = spark.read.orc("posts")
+
+    print(posts.count())
+
+    # posts = posts.filter
+
+
+    # result = posts.select("question1","question2","is_duplicate").union(postlinks.select("question1","question2","is_duplicate"))
+
+    # result.write.csv("processed_data/combined_data", mode='overwrite')
 
 
 
