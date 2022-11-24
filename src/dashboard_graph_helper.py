@@ -29,6 +29,21 @@ def get_question_tag_count_data(year="All"):
     duplicate_question_tags = duplicate_question_tags.groupBy("tag").sum("count").withColumnRenamed("sum(count)", "duplicate_count")
 
     return top_question_tags.join(duplicate_question_tags, top_question_tags["tag"]== duplicate_question_tags["tag"]).drop(duplicate_question_tags["tag"]).toPandas()
+
+def get_dashboard_stats():
+
+    stats = spark.read.json("../data/dashboard_stats")
+    return stats.toPandas()
+
+
+def get_duplicate_posts():
+
+    posts = spark.read.orc("../data/duplicate-posts-closing-time")
+    posts = posts.orderBy("closing_date_converted").withColumnRenamed("avg(time_for_closure)", "time_for_closure")
+    return posts.toPandas()
+
+
+
    
 
 
@@ -39,5 +54,5 @@ if __name__ == '__main__':
     assert spark.version >= '3.0' # make sure we have Spark 3.0+
     spark.sparkContext.setLogLevel('WARN')
     sc = spark.sparkContext
-    get_question_tag_count_data()
+    get_duplicate_posts()
 
