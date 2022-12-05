@@ -174,25 +174,28 @@ def main():
 
         countries_goe_json = dh.get_countries_goe_json()
 
-        data = [['France', 10], ['Germany', 22], ['Italy', 5], ['Poland',7], ['Spain',8], ['United Kingdom',21], ['India',21], ['Pakistan',21]] 
-        df_map = pd.DataFrame(data, columns = ['Country', 'count']) 
+        # data = [['France', 10], ['Germany', 22], ['Italy', 5], ['Poland',7], ['Spain',8], ['United Kingdom',21], ['India',21], ['Pakistan',21]] 
+        # df_map = pd.DataFrame(data, columns = ['Country', 'count']) 
+
+        df_map = dh.get_choroplethmapbox_data()
 
 
         fig9 = go.Figure(go.Choroplethmapbox(
             geojson=countries_goe_json,
-            locations=df_map['Country'],
+            locations=df_map['country'],
             z=df_map['count'],
-            colorscale="sunsetdark",
+            colorscale="Viridis",
             # zmin=0,
             # zmax=500000,
             marker_opacity=0.5,
             marker_line_width=0,
+            reversescale = True
             ))
 
 
 
         fig9.update_layout(
-            mapbox_style="carto-darkmatter",
+            mapbox_style="stamen-toner",
             mapbox_center={"lat": 46.8, "lon": 8.2},
             width=800,
             height=600,
