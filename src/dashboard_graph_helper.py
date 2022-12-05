@@ -2,6 +2,7 @@ import json
 import sys
 from pathlib import Path
 assert sys.version_info >= (3, 5) # make sure we have Python 3.5+
+import pandas as pd
 
 from pyspark.sql import SparkSession, functions, types
 from pyspark.sql.functions import year,col, asc,desc
@@ -56,6 +57,23 @@ def get_countries_goe_json():
 
 
 
+def get_choroplethmapbox_data():
+
+    countries = pd.read_json("../data/country_df.json")
+
+    print(type(countries))
+    countries = countries.groupby('country')['count'].sum().reset_index()
+    print(type(countries))
+    # print(countries)
+
+    print(countries[countries['country'].str.contains("america")])
+
+    return countries
+
+
+
+
+
    
 
 
@@ -66,5 +84,5 @@ if __name__ == '__main__':
     assert spark.version >= '3.0' # make sure we have Spark 3.0+
     spark.sparkContext.setLogLevel('WARN')
     sc = spark.sparkContext
-    get_duplicate_posts()
+    get_choroplethmapbox_data()
 
