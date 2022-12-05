@@ -8,8 +8,8 @@ from pyspark.sql import SparkSession, functions, types
 
 def main():
    
-    posts = spark.read.orc("post")
-    postlinks = spark.read.orc("postlink")
+    posts = spark.read.orc("../post")
+    postlinks = spark.read.orc("../postlink")
 
 
 
@@ -22,7 +22,7 @@ def main():
 
     join2 = join2.withColumn("is_duplicate", functions.lit(True))
     join2 = join2.sample(False, 0.72, seed=0)
-    join2.write.csv("processed_data/is-duplicate-true", mode='overwrite')
+    join2.write.csv("../processed_data/is-duplicate-true", mode='overwrite')
 
 
 if __name__ == '__main__':
