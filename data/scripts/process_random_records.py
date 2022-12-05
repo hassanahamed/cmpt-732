@@ -14,7 +14,7 @@ def main():
     # main logic starts here
 
 
-    posts_f = spark.read.orc("post")
+    posts_f = spark.read.orc("../post")
 
     posts_f = posts_f.filter(posts_f._Title.isNotNull())
     emp_RDD = sc.emptyRDD()
@@ -42,7 +42,7 @@ def main():
     final = posts.join(posts2, posts["row1"] == posts2["row2"])
 
     final = final.withColumn("is_duplicate", functions.lit(False))
-    final.write.csv("processed_data/is-duplicate-false", mode='overwrite')
+    final.write.csv("../processed_data/is-duplicate-false", mode='overwrite')
 
     # posts.show()
 

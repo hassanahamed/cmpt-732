@@ -1,4 +1,6 @@
 from datetime import date
+import json
+from urllib.request import urlopen
 import streamlit as st
 from wordcloud import WordCloud
 import plotly.graph_objects as go
@@ -6,6 +8,8 @@ import pandas as pd
 import dashboard_graph_helper as dh
 from dateutil.relativedelta import relativedelta
 import matplotlib.pyplot as plt
+import numpy as np
+import plotly.express as px
 
 
 def main():
@@ -166,11 +170,18 @@ def main():
         sources1 = ["All", "2018", "2019", "2020"]
         energy = left_column1.selectbox("Year for graph2", sources1)
 
-        df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/2011_us_ag_exports.csv')
+       
 
-        fig9 = go.Figure(data=go.Choroplethmapbox(
-            locations=df['code'], # Spatial coordinates
-            z = df['total exports'].astype(float), # Data to be color-coded
+        countries_goe_json = dh.get_countries_goe_json()
+
+        data = [['France', 10], ['Germany', 22], ['Italy', 5], ['Poland',7], ['Spain',8], ['United Kingdom',21], ['India',21], ['Pakistan',21]] 
+        df_map = pd.DataFrame(data, columns = ['Country', 'count']) 
+
+
+        fig9 = go.Figure(go.Choroplethmapbox(
+            geojson=countries_goe_json,
+            locations=df_map['Country'],
+            z=df_map['count'],
             colorscale="sunsetdark",
             # zmin=0,
             # zmax=500000,
@@ -178,13 +189,15 @@ def main():
             marker_line_width=0,
             ))
 
+
+
         fig9.update_layout(
-            mapbox_style="carto-positron",
+            mapbox_style="carto-darkmatter",
             mapbox_center={"lat": 46.8, "lon": 8.2},
             width=800,
             height=600,
             margin={"r": 0, "t": 0, "l": 0, "b": 0})
-
+        
         st.plotly_chart(fig9)
 
     ## -------------------------------------------------------Dash board page ends-------------------------------------------------------

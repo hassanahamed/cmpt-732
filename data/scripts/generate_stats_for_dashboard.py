@@ -15,11 +15,11 @@ def main():
     types.StructField('name', types.StringType(), True),
     types.StructField('count', types.IntegerType(),True)
     ])
-    posts = spark.read.orc("posts")
+    posts = spark.read.orc("../posts")
     data.append(("question", posts.count()))
 
 
-    postlinks = spark.read.orc("postlink")
+    postlinks = spark.read.orc("../postlink")
 
     postlinks = postlinks.filter(postlinks._LinkTypeId == 3)
 
@@ -27,11 +27,8 @@ def main():
 
     data.append(("duplicate_question", duplicate_posts.count()))
 
-
-
-
     writing_df = spark.createDataFrame(data=data, schema = dict_schema)
-    writing_df.write.json("dashboard_stats", mode='overwrite')
+    writing_df.write.json("../dashboard_stats", mode='overwrite')
 
     # posts = posts.filter
 

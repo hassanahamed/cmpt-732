@@ -11,13 +11,13 @@ def main():
 
     ## TODO check again with hardisk post folder
     
-    posts = spark.read.orc("posts")
+    posts = spark.read.orc("../post")
 
     posts = posts.filter(posts["_PostTypeId"] ==1)
 
     posts = posts.withColumn("year", year(posts["_CreationDate"]))
 
-    posts.write.partitionBy("year").orc("posts", mode='overwrite')
+    posts.write.partitionBy("year").orc("../posts-per-year", mode='overwrite')
 
 
 

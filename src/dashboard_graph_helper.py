@@ -1,3 +1,4 @@
+import json
 import sys
 from pathlib import Path
 assert sys.version_info >= (3, 5) # make sure we have Python 3.5+
@@ -41,6 +42,17 @@ def get_duplicate_posts():
     posts = spark.read.orc("../data/duplicate-posts-closing-time")
     posts = posts.orderBy("closing_date_converted").withColumnRenamed("avg(time_for_closure)", "time_for_closure")
     return posts.toPandas()
+
+
+def get_countries_goe_json():
+     
+    f = open('../data/countries.geojson')
+    countries = json.load(f)
+
+    for i in range(0,len(countries['features'])):
+                countries['features'][i]['id'] = countries['features'][i]['properties']['ADMIN']
+    
+    return countries
 
 
 

@@ -9,7 +9,7 @@ from pyspark.sql.functions import year, datediff, col, to_date
 
 def main():
    
-    posts = spark.read.orc("../posts")
+    posts = spark.read.orc("../post")
     postlinks = spark.read.orc("../postlink")
 
     posts = posts.filter(posts["_PostTypeId"] ==1)
@@ -23,7 +23,7 @@ def main():
 
     join_value = join_value.withColumn("closing_date_converted", to_date(join_value["closing_date"]))
 
-    join_value.select("closing_date_converted", "time_for_closure").groupBy("closing_date_converted").avg("time_for_closure").write.orc("duplicate-posts-closing-time", mode='overwrite')
+    join_value.select("closing_date_converted", "time_for_closure").groupBy("closing_date_converted").avg("time_for_closure").write.orc("../duplicate-posts-closing-time", mode='overwrite')
 
 
     join_value.write.partitionBy("year").orc("../duplicate-posts", mode='overwrite')

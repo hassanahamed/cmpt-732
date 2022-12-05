@@ -30,7 +30,7 @@ def main():
     types.StructField('year', types.IntegerType(),True)
     ])
 
-    posts = spark.read.orc("duplicate-posts")
+    posts = spark.read.orc("../duplicate-posts")
 
     posts_with_tag_rdd = posts.select("_Tags", "year").rdd
     
@@ -43,7 +43,7 @@ def main():
 
     tags_df = spark.createDataFrame(structured_tags, schema = tags_schema)
 
-    tags_df.write.partitionBy("year").orc("duplicate-question-tags-count", mode='overwrite')
+    tags_df.write.partitionBy("year").orc("../duplicate-question-tags-count", mode='overwrite')
 
 
    
