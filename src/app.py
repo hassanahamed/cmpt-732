@@ -10,7 +10,7 @@ from dateutil.relativedelta import relativedelta
 import matplotlib.pyplot as plt
 import numpy as np
 import plotly.express as px
-
+import streamlit.components.v1 as components
 
 def main():
 
@@ -202,6 +202,19 @@ def main():
             margin={"r": 0, "t": 0, "l": 0, "b": 0})
         
         st.plotly_chart(fig9)
+	st.title("Tags_dashboard")
+	st.text(" ")
+	html_temp="""<script type='module' src='https://10az.online.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js'></script><tableau-viz id='tableau-viz' src='https://10az.online.tableau.com/t/nagendra1816/views/wordcloud_tags/Dashboard1' width='1000' height='800' hide-tabs toolbar='bottom' ></tableau-viz>"""
+#html_temp="""https://10az.online.tableau.com/t/bigdatasfu/views/Big_Data/Dashboard1"""
+	components.html(html_temp,width=1000,height=780)
+
+	html_temp2="""<script type='module' src='https://10az.online.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js'></script><tableau-viz id='tableau-viz' src='https://10az.online.tableau.com/t/nagendra1816/views/wordcloud_tags/Sheet2' width='1000' height='800' hide-tabs toolbar='bottom' ></tableau-viz>"""
+#html_temp="""https://10az.online.tableau.com/t/bigdatasfu/views/Big_Data/Dashboard1"""
+	components.html(html_temp2,width=1000,height=780)
+
+	html_temp3="""<script type='module' src='https://10az.online.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js'></script><tableau-viz id='tableau-viz' src='https://10az.online.tableau.com/t/nagendra1816/views/wordcloud_tags_dps/Sheet3' width='1000' height='800' hide-tabs toolbar='bottom' ></tableau-viz>"""
+#html_temp="""https://10az.online.tableau.com/t/bigdatasfu/views/Big_Data/Dashboard1"""
+	components.html(html_temp3,width=1000,height=780)
 
     ## -------------------------------------------------------Dash board page ends-------------------------------------------------------
 
