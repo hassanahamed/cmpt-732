@@ -20,7 +20,6 @@ def main():
 
     join2 = join_value.alias('join_value2').join(posts.alias('posts'), functions.col("posts._Id") == functions.col("join_value2._RelatedPostId"), "inner").dropDuplicates(["_Id"]).select(functions.col("join_value2._Title").alias("question1"), functions.col("posts._Title").alias("question2"), functions.col("posts._Tags").alias("tag"))
 
-    print(join2.count())
 
     join2.coalesce(1).write.json("../processed_data/tag-duplicate-questions", mode='overwrite')
 

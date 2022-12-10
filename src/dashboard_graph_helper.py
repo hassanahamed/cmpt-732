@@ -1,19 +1,29 @@
 import json
 import sys
 from pathlib import Path
+# sys.path.insert(0, 'D:\courses\big data\project\repo\cmpt-732\models\infer.py')
+# sys.path.insert(1, 'D:\courses\big data\project\repo\cmpt-732\models\weaviate_search.py')
+# sys.path.insert(1, '../models/weaviate_search.py')
+
+import sys
+sys.path.append('..')
+from models.infer import setup,is_similar
+
 assert sys.version_info >= (3, 5) # make sure we have Python 3.5+
 import pandas as pd
+import torch
+from torch import nn
+from torch.nn import functional as F
 
 from pyspark.sql import SparkSession, functions, types
 from pyspark.sql.functions import year,col, asc,desc
 
 
-# add more functions as necessary
-
 spark = SparkSession.builder.appName('reddit averages df').getOrCreate()
 assert spark.version >= '3.0' # make sure we have Spark 3.0+
 spark.sparkContext.setLogLevel('WARN')
-sc = spark.sparkContext
+
+# add more functions as necessary
 
 def get_question_tag_count_data(year="All"):
    
@@ -21,7 +31,6 @@ def get_question_tag_count_data(year="All"):
     duplicate_question_tags = spark.read.orc("../data/duplicate-question-tags-count")
 
     if year!="All":
-        print("inside")
         question_tags = question_tags.filter(question_tags["year"] == year)
         duplicate_question_tags = duplicate_question_tags.filter(duplicate_question_tags["year"] == year)
     
@@ -60,19 +69,24 @@ def get_countries_goe_json():
 def get_choroplethmapbox_data():
 
     countries = pd.read_json("../data/country_df.json")
-
-    print(type(countries))
     countries = countries.groupby('country')['count'].sum().reset_index()
-    print(type(countries))
-    # print(countries)
-
-    print(countries[countries['country'].str.contains("america")])
-
     return countries
 
+def get_top_5_questions(tag):
+
+    top5 = spark.read.json("../data/top5/")
+    top5= top5.filter(top5.New_Tags == tag).select(col("_Title").alias("Question"), col("_ViewCount").alias("ViewCount"))
+    
+    return top5.toPandas()
 
 
 
+embed,sbert_model,nlp,fuzzy_scaler,wr_scaler,model=setup()
+
+def check_similarity(question1,question2):
+    pass
+    is_duplicate = is_similar(question1,question2,embed,sbert_model,nlp,fuzzy_scaler,wr_scaler,model)
+    return is_duplicate
 
    
 
