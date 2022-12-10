@@ -1,6 +1,6 @@
-1)To clone whole project first clone files from this github page and store them in a single folder.
+1) To clone whole project first clone files from this github page and store them in a single folder.
 
-2)Get "models" folder from https://drive.google.com/drive/folders/1DJY5xnmB-Ytp6e1XgUgprGbrztJq9DO2?usp=sharing and put in main folder which you have created before(it should have src and data folders).
+2) Get "models" folder from https://drive.google.com/drive/folders/1DJY5xnmB-Ytp6e1XgUgprGbrztJq9DO2?usp=sharing and put in main folder which you have created before(it should have src and data folders).
 
 3) Install Docker and run docker file available in the main folder.
 
