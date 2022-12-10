@@ -5,7 +5,7 @@ The live demo for this project can been viewed here:
 
 ## Overview
 
-This project was done for SFU's CMPT 732 (Big Data I) course, with the goal to target a specific problem
+This project is done for SFU's CMPT 732 (Big Data I) course, with the goal to target a specific problem
 that arises from the large inflow of unmonitored data on these forums: duplicate questions. Our work focuses
 on StackOverflow, a forum for software developers and programmers, that currently relies on vigilant,
 high-reputation users to report duplicate questions. While this manual method is effective, it is laborious and
