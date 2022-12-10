@@ -12,21 +12,14 @@ Notes on how to run the code can be found in RUNNING.md, and a more detailed ove
 ## Structure
 ```
 
-DS_Store
-.github
-   |-- workflows
-   |   |-- main.yml
 Dockerfile
 README.md
 RUNNING.MD
 data
-   |-- .DS_Store
    |-- countries.geojson
    |-- country_df.json
    |-- duplicate-question-tags-count
-   |   |-- .DS_Store
    |-- question-tags-count
-   |   |-- .DS_Store
    |-- scripts
    |   |-- generate_duplicate_posts_per_year.py
    |   |-- generate_duplicate_question_tag_count.py
@@ -40,7 +33,6 @@ data
    |   |-- process_random_records.py
    |   |-- spark-xml_2.12-0.5.0.jar
    |-- top5
-   |   |-- .DS_Store
    |   |-- data.json
 jupyter notebooks
    |-- sof_ml.ipynb
