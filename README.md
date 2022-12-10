@@ -5,7 +5,15 @@ The live demo for this project can been viewed here:
 
 ## Overview
 
-This project was done for SFU's CMPT 732 (Big Data I) course, with the goal of 
+This project was done for SFU's CMPT 732 (Big Data I) course, with the goal to target a specific problem
+that arises from the large inflow of unmonitored data on these forums: duplicate questions. Our work focuses
+on StackOverflow, a forum for software developers and programmers, that currently relies on vigilant,
+high-reputation users to report duplicate questions. While this manual method is effective, it is laborious and
+slow.
+
+Our project includes extracting duplicate and non-duplicate questions from StackOverflow data. Using
+that data, we have performed data analysis and we have trained two models that can 1) detect if two
+questions are duplicates and 2) search for similar questions over a large corpus of data.
 
 Notes on how to run the code can be found in RUNNING.md, and a more detailed overview can be found in the project report (under Documents).
 
@@ -15,12 +23,12 @@ Notes on how to run the code can be found in RUNNING.md, and a more detailed ove
 Dockerfile
 README.md
 RUNNING.MD
-data
+data                                                        Contains the data required for Visualization
    |-- countries.geojson
    |-- country_df.json
    |-- duplicate-question-tags-count
    |-- question-tags-count
-   |-- scripts
+   |-- scripts                                               Contains the scripts required for generating data
    |   |-- generate_duplicate_posts_per_year.py
    |   |-- generate_duplicate_question_tag_count.py
    |   |-- generate_duplicate_questions_for_ui.py
@@ -37,7 +45,7 @@ data
 jupyter notebooks
    |-- sof_ml.ipynb
    |-- sof_weaviate_search.ipynb
-models
+models                                                      Contains model file for Machine Learning               
    |-- __init__.py
    |-- distilbert-base-nli-mean-tokens
    |   |-- 0_Transformer
@@ -75,7 +83,7 @@ models
    |   |   |-- variables.data-00000-of-00001
    |   |   |-- variables.index
    |-- wr_scaler.sav
-src
+src                                                         Contains code for frontend app
    |-- .DS_Store
    |-- __pycache__
    |   |-- dashboard_graph_helper.cpython-310.pyc
@@ -86,7 +94,7 @@ src
 ```
 ## Team Members
 
-- Dilip ()
-- Rubin ()
-- Nagendra ()
-- Hassan (sha272)
+- Dilip Reddy
+- Rubin
+- Nagendra
+- Hassan
