@@ -38,15 +38,21 @@ Weaviate Setup:
 To run Weaviate:
 
 1)Please install Python 3.7.8 (to install multiple python versions follow this link:-"https://martinfritz.medium.com/work-with-multiple-versions-of-python-on-windows-10-eed1e5f52f07")
-2)Save "weaviate-src" folder in local drive from github repo
-2)Create a virtual enivronment in "weaviate-src" folder and activate it.(ref:-"https://realpython.com/python-virtual-environments-a-primer/")
-3)Run "pip install -r requirements.txt" in previously created virtual env.
-if you get protobuf error, run "pip install protobuf==3.19.*" in the same virtual env
 
-4)Please install Docker and Start it up.
-5)Run "docker-compose up -d" in same directory as of "weaviate-src".
-6)Run "streamlit run app.py" from previously created virtual env, this will load the frontend in "http://localhost:8501/"
+2)Save "weaviate-src" folder in local drive from github repo
+
+3)Create a virtual enivronment in "weaviate-src" folder and activate it.(ref:-"https://realpython.com/python-virtual-environments-a-primer/")
+
+4)Run "pip install -r requirements.txt" in previously created virtual env. if you get protobuf error, run "pip install protobuf==3.19.*" in the same virtual env
+
+5)Please install Docker and Start it up.
+
+6)Run "docker-compose up -d" in same directory as of "weaviate-src".
+
+7)Run "streamlit run app.py" from previously created virtual env, this will load the frontend in "http://localhost:8501/"
 
 Note:
+
 Please use computer with or atleast (16GB of RAM)
+
 Adding data to weaviate take up lot of RAM so we have only selected 50,000 questions for loading the model.
