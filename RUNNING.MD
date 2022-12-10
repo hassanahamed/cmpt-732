@@ -19,14 +19,22 @@ Running the above image shall render the frontend app as specified in the docker
 
 
 Acesssing frontend:
+
 To Access frontend for visualizations and classification model, go to http://ec2-52-38-79-150.us-west-2.compute.amazonaws.com:8501/.
+
+Following are the credentials required for accessing Tableau-
+
+Username - nrv2@sfu.ca
+Password - Manju sri@1
 
 
 
 Weaviate Setup:
+
 1)First get weaviate_src folder from google drive Link - 
 
 To run Weaviate:
+
 1)Please install Python 3.7.8 (to install multiple python versions follow this link:-"https://martinfritz.medium.com/work-with-multiple-versions-of-python-on-windows-10-eed1e5f52f07")
 2)Save "weaviate-src" folder in local drive from github repo
 2)Create a virtual enivronment in "weaviate-src" folder and activate it.(ref:-"https://realpython.com/python-virtual-environments-a-primer/")
