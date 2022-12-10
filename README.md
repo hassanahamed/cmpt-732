@@ -1,7 +1,7 @@
 ## Demo
 
 The live demo for this project can been viewed here: 
-<a target="_blank" href="https://dataknyts-nyt.herokuapp.co/" >Live Demo</a>
+<a target="_blank" href="http://ec2-52-38-79-150.us-west-2.compute.amazonaws.com:8501/" >Live Demo</a>
 
 ## Overview
 
@@ -11,7 +11,7 @@ Notes on how to run the code can be found in RUNNING.md, and a more detailed ove
 
 ## Structure
 
-```
+
 .
 Dockerfile
 README.md
@@ -84,7 +84,7 @@ src
    |-- app.py
    |-- dashboard_graph_helper.py
    |-- requirements.txt
-```
+
 
 ## Team Members
 
@@ -92,5 +92,3 @@ src
 - Rubin ()
 - Nagendra ()
 - Hassan (sha272)
-
-
