@@ -20,7 +20,7 @@ Running the above image shall render the frontend app as specified in the docker
 
 Acesssing frontend:
 
-To Access frontend for visualizations and classification model, go to http://ec2-52-38-79-150.us-west-2.compute.amazonaws.com:8501/.
+To Access frontend for visualizations and classification model hosted on ec2 instance, go to http://ec2-52-38-79-150.us-west-2.compute.amazonaws.com:8501/.
 
 Following are the credentials required for accessing Tableau-
 
