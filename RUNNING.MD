@@ -31,7 +31,9 @@ Password - Manju sri@1
 
 Weaviate Setup:
 
-1)First get weaviate_src folder from google drive Link - 
+1)First download "weaviate_src.zip" from google drive Link - https://drive.google.com/drive/folders/1LheJzbx__FnN7x5QFRqiab7vS4skHuRe
+
+2)Extract it to weaviate_src folder in local system.
 
 To run Weaviate:
 
