@@ -10,7 +10,7 @@ This project was done for SFU's CMPT 732 (Big Data I) course, with the goal of
 Notes on how to run the code can be found in RUNNING.md, and a more detailed overview can be found in the project report (under Documents).
 
 ## Structure
-
+```
 
 DS_Store
 .github
@@ -91,7 +91,7 @@ src
    |-- app.py
    |-- dashboard_graph_helper.py
    |-- requirements.txt
-
+```
 ## Team Members
 
 - Dilip ()
