@@ -25,8 +25,8 @@ To Access frontend for visualizations and classification model hosted on ec2 ins
 Following are the credentials required for accessing Tableau-
 
 Username - nrv2@sfu.ca
-Password - Manju sri@1
 
+Password - Manju sri@1
 
 
 Weaviate Setup:
